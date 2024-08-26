@@ -37,13 +37,10 @@ const postJobService = async (req, res) => {
 const deleteJobService = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
     const deleteJob = await JobModel.deleteOne({ _id: id });
     res.status(200).json({
       status: "success",
-      data: {
-        deleteJob,
-      },
+      deleteId: id,
     });
   } catch (error) {
     res.status(500).json({

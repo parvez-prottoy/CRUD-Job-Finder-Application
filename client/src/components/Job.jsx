@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeJob } from "../features/jobs/jobsSlice";
+import toast from "react-hot-toast";
+
 const Job = ({ job }) => {
-  const { title, type, salary, deadline } = job || {};
+  const dispatch = useDispatch();
+  const { _id, title, type, salary, deadline } = job || {};
+  const { isLoading, isError, error } = useSelector((state) => state.jobs);
+  const handleDelete = (id) => {
+    dispatch(removeJob(id));
+    toast.success("Successfully Delete Job");
+  };
   return (
     <div className="lws-single-job">
       <div className="flex-1 min-w-0">
@@ -37,9 +47,13 @@ const Job = ({ job }) => {
         </span>
 
         <span className="sm:ml-3">
-          <button type="button" className="lws-delete btn btn-danger ">
+          <button
+            onClick={() => handleDelete(_id)}
+            type="button"
+            className="lws-delete btn btn-danger "
+          >
             <i className="fa-solid fa-trash text-gray-300 -ml-1 mr-2"></i>
-            Delete
+            {isLoading ? "Loading" : "Delete"}
           </button>
         </span>
       </div>
