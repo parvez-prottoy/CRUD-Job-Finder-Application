@@ -34,4 +34,22 @@ const postJobService = async (req, res) => {
     });
   }
 };
-module.exports = { getJobsService, postJobService };
+const deleteJobService = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const deleteJob = await JobModel.deleteOne({ _id: id });
+    res.status(200).json({
+      status: "success",
+      data: {
+        deleteJob,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error?.message,
+    });
+  }
+};
+module.exports = { getJobsService, postJobService, deleteJobService };

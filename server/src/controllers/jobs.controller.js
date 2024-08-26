@@ -1,4 +1,8 @@
-const { getJobsService, postJobService } = require("../services/jobsService");
+const {
+  getJobsService,
+  postJobService,
+  deleteJobService,
+} = require("../services/jobsService");
 
 const getJobs = async (_req, res) => {
   const jobs = await getJobsService(res);
@@ -8,4 +12,8 @@ const postJob = async (req, res) => {
   const job = await postJobService(req, res);
   return job;
 };
-module.exports = { getJobs, postJob };
+const deleteJob = async (req, res) => {
+  const deleteJob = await deleteJobService(req, res);
+  return deleteJob;
+};
+module.exports = { getJobs, postJob, deleteJob };
