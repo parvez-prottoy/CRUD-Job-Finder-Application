@@ -5,3 +5,7 @@ export const getJobs = async () => {
   console.log();
   return res.data.data.jobs;
 };
+export const postJob = async (data) => {
+  const res = await axios.post("/jobs", data);
+  return res.data.data.job;
+};
