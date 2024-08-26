@@ -1,14 +1,14 @@
 const EditJob = () => {
   return (
-    <main class="max-w-3xl rounded-lg mx-auto relative z-20 p-10 xl:max-w-none bg-[#1E293B]">
-      <h1 class="mb-10 text-center lws-section-title">Edit Job</h1>
+    <main className="max-w-3xl rounded-lg mx-auto relative z-20 p-10 xl:max-w-none bg-[#1E293B]">
+      <h1 className="mb-10 text-center lws-section-title">Edit Job</h1>
 
-      <div class="max-w-3xl mx-auto">
-        <form class="space-y-6">
-          <div class="fieldContainer">
+      <div className="max-w-3xl mx-auto">
+        <form className="space-y-6">
+          <div className="fieldContainer">
             <label
               for="lws-JobTitle"
-              class="text-sm font-medium text-slate-300"
+              className="text-sm font-medium text-slate-300"
             >
               Job Title
             </label>
@@ -33,7 +33,7 @@ const EditJob = () => {
             </select>
           </div>
 
-          <div class="fieldContainer">
+          <div className="fieldContainer">
             <label for="lws-JobType">Job Type</label>
             <select id="lws-JobType" name="lwsJobType" required>
               <option value="" hidden selected>
@@ -45,22 +45,22 @@ const EditJob = () => {
             </select>
           </div>
 
-          <div class="fieldContainer">
+          <div className="fieldContainer">
             <label for="lws-JobSalary">Salary</label>
-            <div class="flex border rounded-md shadow-sm border-slate-600">
-              <span class="input-tag">BDT</span>
+            <div className="flex border rounded-md shadow-sm border-slate-600">
+              <span className="input-tag">BDT</span>
               <input
                 type="number"
                 name="lwsJobSalary"
                 id="lws-JobSalary"
                 required
-                class="!rounded-l-none !border-0"
+                className="!rounded-l-none !border-0"
                 placeholder="20,00,000"
               />
             </div>
           </div>
 
-          <div class="fieldContainer">
+          <div className="fieldContainer">
             <label for="lws-JobDeadline">Deadline</label>
             <input
               type="date"
@@ -70,11 +70,11 @@ const EditJob = () => {
             />
           </div>
 
-          <div class="text-right">
+          <div className="text-right">
             <button
               type="submit"
               id="lws-submit"
-              class="cursor-pointer btn btn-primary w-fit"
+              className="cursor-pointer btn btn-primary w-fit"
             >
               Edit
             </button>

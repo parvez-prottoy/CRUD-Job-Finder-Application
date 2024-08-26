@@ -15,7 +15,7 @@ const schema = new mongoose.Schema(
       required: true,
     },
     deadline: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
