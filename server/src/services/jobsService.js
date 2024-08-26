@@ -17,4 +17,21 @@ const getJobsService = async (res) => {
     });
   }
 };
-module.exports = { getJobsService };
+const postJobService = async (req, res) => {
+  try {
+    const data = req.body || {};
+    const job = await JobModel.create(data);
+    res.status(200).json({
+      status: "success",
+      data: {
+        job,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error?.message,
+    });
+  }
+};
+module.exports = { getJobsService, postJobService };
