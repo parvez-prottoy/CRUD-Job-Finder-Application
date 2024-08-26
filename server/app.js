@@ -2,6 +2,8 @@ const express = require("express");
 const app = new express();
 const { notFoundHandler, errorHandler } = require("./src/utils/error");
 const baseRoute = require("./src/routes/base.route");
+// ? connectDB
+const connectDB = require("./config/db").apply();
 // ? use middleware
 const morgan = require("morgan");
 const cors = require("cors");
