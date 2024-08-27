@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateFilters } from "../features/filters/filtersSlice";
 
 const JobsFilter = () => {
+  const initialState = {
+    search: "",
+    sort: "",
+  };
+  const [filterValues, setFilterValues] = useState({ ...initialState });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(updateFilters(filterValues));
+  }, [filterValues, dispatch]);
+  const handleChange = (e) => {
+    setFilterValues({
+      ...filterValues,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="md:flex space-y-2 md:space-y-0 justify-between mb-10 ">
       <h1 className="lws-section-title">All Available Jobs</h1>
@@ -10,6 +27,8 @@ const JobsFilter = () => {
           <input
             type="text"
             placeholder="Search Job"
+            name="search"
+            onChange={handleChange}
             className="search-input"
             id="lws-searchJob"
           />
@@ -18,11 +37,12 @@ const JobsFilter = () => {
           id="lws-sort"
           name="sort"
           autoComplete="sort"
+          onChange={handleChange}
           className="flex-1"
         >
-          <option>Default</option>
-          <option>Salary (Low to High)</option>
-          <option>Salary (High to Low)</option>
+          <option value="">Default</option>
+          <option value="lowTo">Salary (Low to High)</option>
+          <option value="highTo">Salary (High to Low)</option>
         </select>
       </div>
     </div>
