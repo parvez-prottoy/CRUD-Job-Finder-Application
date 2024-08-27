@@ -54,10 +54,10 @@ const patchJobService = async (req, res) => {
     const { id } = req.params;
     const { title, type, salary, deadline } = req.body;
     const updateJob = await JobModel.findOne({ _id: id });
-    updateJob.title = title ?? updateJob.name;
-    updateJob.type = type ?? updateJob.type;
-    updateJob.salary = salary ?? updateJob.salary;
-    updateJob.deadline = deadline ?? updateJob.deadline;
+    updateJob.title = title;
+    updateJob.type = type;
+    updateJob.salary = salary;
+    updateJob.deadline = deadline;
     await updateJob.save();
     res.status(200).json({
       status: "success",

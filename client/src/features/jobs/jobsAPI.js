@@ -10,6 +10,11 @@ export const postJob = async (data) => {
   return res.data.data.job;
 };
 export const deleteJob = async (id) => {
-  const res = await axios.delete(`/jobs/${id}`);
+  const res = await axios.delete(`/jobs/delete/${id}`);
   return res.data.deleteId;
+};
+export const updateJob = async ({ id, data }) => {
+  const res = await axios.patch(`/jobs/update/${id}`, data);
+  console.log(res);
+  return res.data.data;
 };
