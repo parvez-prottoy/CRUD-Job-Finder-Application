@@ -2,7 +2,9 @@
   "name": "job_finder_application_server",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
