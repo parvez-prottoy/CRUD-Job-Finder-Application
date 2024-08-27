@@ -67,8 +67,7 @@ const jobsSlice = createSlice({
       .addCase(createJob.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        [action.payload].concat(state.jobs);
-        state.jobs = [action.payload, ...state.jobs];
+        state.jobs.unshift(action.payload);
       })
       .addCase(createJob.rejected, (state, action) => {
         state.isLoading = false;
