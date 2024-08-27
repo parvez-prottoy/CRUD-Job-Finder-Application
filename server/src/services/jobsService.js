@@ -49,4 +49,30 @@ const deleteJobService = async (req, res) => {
     });
   }
 };
-module.exports = { getJobsService, postJobService, deleteJobService };
+const patchJobService = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, type, salary, deadline } = req.body;
+    const updateJob = await JobModel.findOne({ _id: id });
+    updateJob.title = title ?? updateJob.name;
+    updateJob.type = type ?? updateJob.type;
+    updateJob.salary = salary ?? updateJob.salary;
+    updateJob.deadline = deadline ?? updateJob.deadline;
+    await updateJob.save();
+    res.status(200).json({
+      status: "success",
+      data: updateJob,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error?.message,
+    });
+  }
+};
+module.exports = {
+  getJobsService,
+  postJobService,
+  deleteJobService,
+  patchJobService,
+};
